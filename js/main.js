@@ -64,7 +64,7 @@ function generatePostlayout(posts) {
     //  prendiamo il riferimento dal html per richiamare il container
     const container = document.getElementById('container');
     // creazione di una variabile vuota per l'inserimento del nostro markup dei post
-    let html = '';
+    let htmlMarkup = '';
 
 
     // ciclo for each per costruire il markup cell'html per ciascuno dei post , utilizzando template viene aggiunto alla stringa html del dom.
@@ -73,7 +73,7 @@ function generatePostlayout(posts) {
         // verifica gli oggetti post generati nel ciclo dei posts
         // console.log(post);
 
-        html += `
+        htmlMarkup += `
             <div class="post">
                 <div class="post__header">
                     <div class="post-meta__icon">
@@ -105,7 +105,7 @@ function generatePostlayout(posts) {
         `;
     });
         // utilizziamo il container con la const di riferimento creata in precedenza per stampare nell'html ed inserire tutti i post dinamici
-            container.innerHTML = html;
+            container.innerHTML =  htmlMarkup;
 
             // // verifica elementi html in console
             // console.log(html);
