@@ -1,3 +1,4 @@
+// Milestone 1 - Leggiamo per bene il nostro array di oggetti che rappresentano ciascun post, così da capire bene i dati come sono strutturati;
 const posts = [
     {
         "id": 1,
@@ -55,3 +56,63 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+// Milestone 2 - Prendendo come riferimento il layout di esempio presente nell’html, stampiamo i post del nostro feed.
+
+// Funzione per generare il layout dei post utilizzando innerHTML
+function generatePostlayout(posts) {
+    //  prendiamo il riferimento dal html per richiamare il container
+    const container = document.getElementById('container');
+    // creazione di una variabile vuota per l'inserimento del nostro markup dei post
+    let html = '';
+
+
+    // ciclo for each per costruire il markup cell'html per ciascuno dei post , utilizzando template viene aggiunto alla stringa html del dom.
+    posts.forEach(post => {
+
+        // verifica gli oggetti post generati nel ciclo dei posts
+        // console.log(post);
+        
+        html += `
+            <div class="post">
+                <div class="post__header">
+                    <div class="post-meta__icon">
+                        <img class="profile-pic" src="${post.author.image}" alt="${post.author.name}">
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">${post.author.name}</div>
+                        <div class="post-meta__time">${post.created}</div>
+                    </div>
+                </div>
+                <div class="post__text">${post.content}</div>
+                <div class="post__image">
+                    <img src="${post.media}" alt="">
+                </div>
+                <div class="post__footer">
+                    <div class="likes js-likes">
+                        <div class="likes__cta">
+                            <a class="like-button js-like-button" href="#" data-postid="${post.id}">
+                                <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                                <span class="like-button__label">Mi Piace</span>
+                            </a>
+                        </div>
+                        <div class="likes__counter">
+                            Piace a <b id="like-counter-${post.id}" class="js-likes-counter">${post.likes}</b> persone
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+        // utilizziamo il container con la const di riferimento creata in precedenza per stampare nell'html ed inserire tutti i post dinamici
+            container.innerHTML = html;
+
+            // // verifica elementi html in console
+            // console.log(html);
+}
+
+        // Chiamata alla funzione per generare il layout dei post
+        generatePostlayout(posts);
+           
+
+// Milestone 3 - Se clicchiamo sul tasto “Mi Piace” cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
