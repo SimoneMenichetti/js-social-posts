@@ -115,4 +115,23 @@ function generatePostlayout(posts) {
         generatePostlayout(posts);
            
 
-// Milestone 3 - Se clicchiamo sul tasto “Mi Piace” cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
+// Milestone 3 - Se clicchiamo sul tasto “Mi Piace” cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. 
+
+// creazione costante di riferimento per i bottoni "like-button"
+
+const likeButton = document.querySelector('.js-like-button');
+
+// creazione funzione per l'event listener al click dei bottoni
+
+likeButton.forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+
+
+    });
+});
+
+
+
+
+// Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
