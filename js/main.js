@@ -109,7 +109,36 @@ function generatePostlayout(posts) {
 
             // // verifica elementi html in console
             // console.log(html);
-}
+
+
+
+         // Aggiungi gestore di eventi per i bottoni "Mi Piace"
+         const likeButtons = document.querySelectorAll('.js-like-button');
+         likeButtons.forEach(button => {
+             button.addEventListener('click', likeButtonClick);
+         });
+     }
+
+     function likeButtonClick(event) {
+        event.preventDefault(); 
+         const button = event.currentTarget;
+         const postElement = button.closest('.post');
+         const likesCounter = postElement.querySelector('.js-likes-counter');
+         let currentLikes = parseInt(likesCounter.innerText);
+
+         // Simuliamo un toggle di classe per il bottone "Mi Piace"
+         button.classList.toggle('like-button--liked');
+
+         // Incrementiamo o decrementiamo il contatore dei likes
+         if (button.classList.contains('like-button--liked')) {
+             currentLikes++;
+         } else {
+             currentLikes--;
+         }
+
+         // Aggiorniamo il contatore dei likes nell'HTML
+         likesCounter.innerText = currentLikes;
+     }
 
         // Chiamata alla funzione per generare il layout dei post
         generatePostlayout(posts);
@@ -117,19 +146,9 @@ function generatePostlayout(posts) {
 
 // Milestone 3 - Se clicchiamo sul tasto “Mi Piace” cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. 
 
-// creazione costante di riferimento per i bottoni "like-button"
-
-const likeButton = document.querySelector('.js-like-button');
-
-// creazione funzione per l'event listener al click dei bottoni
-
-likeButton.forEach(button => {
-    button.addEventListener('click', function(event) {
-        event.preventDefault();
 
 
-    });
-});
+
 
 
 
