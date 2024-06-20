@@ -11,6 +11,7 @@ const posts = [
         "likes": 80,
         "created": "2021-06-25"
     },
+
     {
         "id": 2,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
@@ -22,6 +23,7 @@ const posts = [
         "likes": 120,
         "created": "2021-09-03"
     },
+
     {
         "id": 3,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
@@ -33,6 +35,7 @@ const posts = [
         "likes": 78,
         "created": "2021-05-15"
     },
+
     {
         "id": 4,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
@@ -44,6 +47,7 @@ const posts = [
         "likes": 56,
         "created": "2021-04-03"
     },
+
     {
         "id": 5,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
@@ -105,46 +109,45 @@ function generatePostlayout(posts) {
         `;
     });
         // utilizziamo il container con la const di riferimento creata in precedenza per stampare nell'html ed inserire tutti i post dinamici
-            container.innerHTML =  htmlMarkup;
+        container.innerHTML =  htmlMarkup;
 
-            // // verifica elementi html in console
-            // console.log(html);
+        // // verifica elementi html in console
+        // console.log(html);
 
+// Milestone 3 - Se clicchiamo sul tasto “Mi Piace” cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. 
 
-
-         // Aggiungi gestore di eventi per i bottoni "Mi Piace"
-         const likeButtons = document.querySelectorAll('.js-like-button');
-         likeButtons.forEach(button => {
-             button.addEventListener('click', likeButtonClick);
-         });
-     }
+        // Aggiungi gestore di eventi per i bottoni "Mi Piace"
+        const likeButtons = document.querySelectorAll('.js-like-button');
+        likeButtons.forEach(button => {
+            button.addEventListener('click', likeButtonClick);
+        });
+    }
 
      function likeButtonClick(event) {
         event.preventDefault(); 
-         const button = event.currentTarget;
-         const postElement = button.closest('.post');
-         const likesCounter = postElement.querySelector('.js-likes-counter');
-         let currentLikes = parseInt(likesCounter.innerText);
+        const button = event.currentTarget;
+        const postElement = button.closest('.post');
+        const likesCounter = postElement.querySelector('.js-likes-counter');
+        let currentLikes = parseInt(likesCounter.innerText);
 
-         // Simuliamo un toggle di classe per il bottone "Mi Piace"
-         button.classList.toggle('like-button--liked');
+        // Simuliamo un toggle di classe per il bottone "Mi Piace"
+        button.classList.toggle('like-button--liked');
 
-         // Incrementiamo o decrementiamo il contatore dei likes
-         if (button.classList.contains('like-button--liked')) {
-             currentLikes++;
-         } else {
-             currentLikes--;
-         }
+        // Incrementiamo o decrementiamo il contatore dei likes
+        if (button.classList.contains('like-button--liked')) {
+            currentLikes++;
+        } else {
+            currentLikes--;
+        }
 
-         // Aggiorniamo il contatore dei likes nell'HTML
-         likesCounter.innerText = currentLikes;
-     }
+        // Aggiorniamo il contatore dei likes nell'HTML
+        likesCounter.innerText = currentLikes;
+    }
 
         // Chiamata alla funzione per generare il layout dei post
         generatePostlayout(posts);
            
 
-// Milestone 3 - Se clicchiamo sul tasto “Mi Piace” cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. 
 
 
 
@@ -153,4 +156,3 @@ function generatePostlayout(posts) {
 
 
 
-// Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
